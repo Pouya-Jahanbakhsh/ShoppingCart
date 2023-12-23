@@ -1,9 +1,10 @@
 import React ,{ useState } from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <h2>hello</h2>
+    <Navbar />
   );
 }
 
