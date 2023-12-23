@@ -10,3 +10,9 @@ body {
     background-color: #101010;
     color: #f9f9f9;
 }
+
+/* Modal styles */
+
+.modal-content{
+    background-color: #222;
+}
