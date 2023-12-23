@@ -13,7 +13,7 @@
     justify-content: space-between;
     align-items: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    width: 90px;
+    width: 120px;
     padding: 0.3rem 0.5rem;
     border-radius: 0.3rem;
     border: 0.1rem #f1f1f1 solid;
@@ -35,7 +35,6 @@
 
 .product {
     padding: 0.7rem;
-    height: 380px;
     color: #f1f1f1;
     background-color: #222;
     border-radius: 0.6rem;
@@ -63,15 +62,8 @@
     font-weight: 600;
     padding-top: 0.4rem;
 }
-.product-title {
 
-}
-
-.product-price {
-   
-}
-
-.add-to-cart{
+.add-to-cart,.delete-from-cart{
     padding: 0.6rem 0.8rem;
     border-radius: 0.4rem;
     border: 0.1rem solid #f1f1f1;
@@ -80,7 +72,28 @@
     cursor: pointer;
     transition: all 0.3s;
 }
-.add-to-cart:hover{
+.add-to-cart,.delete-from-cart:hover{
     background-color: #f1f1f1de;
     border-color: #666;
+}
+.cart-counter{
+    width: 100px;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+}
+.quantity{
+    font-size: 22px;
+}
+.cart-counter .fa{
+    border: 0.1rem solid rgba(255, 255, 255, 0.664);
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.cart-counter .fa:hover{
+    background-color: #cacaca;
+    color: #444;
+    border-color: #cecece;
 }

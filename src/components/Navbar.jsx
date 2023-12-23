@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState , useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 import { Modal } from 'react-bootstrap';
 
 export default function Navbar() {
@@ -7,13 +8,17 @@ export default function Navbar() {
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
+  const cart = useContext(CartContext);
+  const productCount = cart.items.reduce((sum , product)=> sum + product.quantity , 0);
+  // const productCount = cart.items.length; //wrong way
+
   return (
     <>
       <div className='navbar'>
         <div className="navbar-cart">
           <button className='navbar-btn' onClick={handleShow}>
             <span>سبد خرید</span>
-            <i className="fa fa-shopping-cart"></i>
+            <i className="fa fa-shopping-cart"></i>({productCount})
           </button>
         </div>
       </div>
