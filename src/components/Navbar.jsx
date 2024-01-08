@@ -1,6 +1,7 @@
-import React, { useState , useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { Modal } from 'react-bootstrap';
+import ModalProduct from './ModalProduct';
 
 export default function Navbar() {
 
@@ -9,7 +10,7 @@ export default function Navbar() {
   const handleClose = () => setShowModal(false);
 
   const cart = useContext(CartContext);
-  const productCount = cart.items.reduce((sum , product)=> sum + product.quantity , 0);
+  const productCount = cart.items.reduce((sum, product) => sum + product.quantity, 0);
   // const productCount = cart.items.length; //wrong way
 
   return (
@@ -23,10 +24,31 @@ export default function Navbar() {
         </div>
       </div>
       <Modal show={showModal} onHide={handleClose} className='modal'>
-        <Modal.Header closeButton closeVariant='white'>
-          <Modal.Title>سبد خرید</Modal.Title>
-          <Modal.Body>Product</Modal.Body>
+        <Modal.Header>
+          <h3 className="title">سبد خرید</h3>
+          <span onClick={handleClose} className="close-btn"><i className='fa fa-close'></i></span>
         </Modal.Header>
+        <Modal.Body>
+          {productCount > 0 ? (
+            <>
+            
+              {cart.items.map((item) => (
+                <ModalProduct key={item.id} id={item.id} quantity={item.quantity} ></ModalProduct>
+              ))}
+              <div className="sub-order">
+                <button className='submit-order'>ثبت سفارش</button>
+                <div className="total-price"> قیمت کل سفارش: {(cart.getTotalAmount()).toLocaleString('fa-IR')} تومان</div>
+              </div>
+            </>
+          )
+            : (
+              <>
+                <h3>سبد خرید خالی است</h3>
+              </>
+            )
+          }
+        </Modal.Body>
+
       </Modal>
     </>
   )
